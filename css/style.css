@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+:root {
+    --pink: #ff74a4;
+    --violet: #9f6ea3;
+    --lightblack: #515C6F;
+    --white: #ffffff;
+    --darkwhite: #cecaca;
+    --pinkshadow: #ffcbdd;
+    --lightbshadow: rgba(0,0,0,0.15);
+}
+
+body {
+    background-image: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.container {
+    background-color: white;
+    padding: 27px;
+    width: 380px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+.container .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .image {
+    height: 256px;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 14px;
+    margin: 20px auto;
+    box-shadow: 0px 5px 5px var(--darkwhite);
+}
+.container .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.container .audio {
+    margin: 0px auto 25px;
+    text-align: center;
+    color: var(--lightblack);
+}
+.container .audio .audioName {
+    font-size: 21px;
+}
+.container .audio .audioSinger {
+    font-size: 18px;
+    line-height: 35px;
+}
+.container .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .icons i:not(.play-pause i) {
+    background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+}
+.play-pause::before {
+    position: absolute;
+    content: "";
+    height: 43px;
+    width: 43px;
+    border-radius: inherit;
+    background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+}
+.container .icons .play-pause {
+    height: 54px;
+    width: 54px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
+    box-shadow: 0px 0px 5px var(--pink);
+}
+.container .icons .play-pause i {
+    height: 43px;
+    width: 43px;
+    line-height: 43px;
+    text-align: center;
+    background: inherit;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+}
+.material-icons {
+    cursor: pointer;
+}
+.playlist.show {
+    bottom: 0;
+    opacity: 1;
+}
+.playlist {
+    position: absolute;
+    z-index: 2;
+    font-size: 18px;
+    opacity: 0;
+    border-radius: 19px;
+    padding: 15px 27px;
+    width: 100%;
+    color: var(--lightblack);
+    bottom: -100%;
+    background-color: white;
+    /* height: 50%; */
+    left: 0;
+    box-shadow: 0px -5px 10px var(--lightbshadow);
+    /* transform: translateY(-100%); */
+    transition: all 0.5s;
+}
+.playlist .playlist-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.playlist .playlist-details {
+    display: flex;
+    align-items: center;
+}
+.playlist .playlist-details span {
+    margin-left: 5px;
+}
+.playlist ul {
+    margin: 10px 0;
+    max-height: 256px;
+    overflow: auto;
+}
+.playlist ul li.song {
+    border-bottom: 1px solid var(--lightbshadow);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    list-style: none;
+    cursor: pointer;
+}
+
+/* Start Progress Bar */
+
+.progressBar{
+    width: 100%;
+    height: 6px;
+    background-color: #f0f0f0;
+    margin-bottom: 45px;
+    cursor: pointer;
+}
+.progressBar .progressSong {
+    background-image: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    height: 6px;
+    width: 0;
+    position: relative;
+    border-radius: 7px;
+}
+.progressBar .progressSong.animation {
+    animation: progressSongBar 216s;
+}
+.progressBar .progressSong.pauseAnimation {
+    animation-play-state: paused;
+}
+.progressBar .progressSong::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    border-radius: 50%;
+    background-image: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    cursor: pointer;
+    top: 50%;
+    right: -9px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.progressBar .progressSong.animation::before {
+    animation: progress 216s;
+}
+.progressBar .progressSong.pauseAnimation::before {
+    animation-play-state: paused;
+}
+.progressBar:hover .progressSong::before{
+    opacity: 1;
+}
+.song-timer {
+    display: flex;
+    justify-content: space-between;
+}
+.progressBar span {
+    color: var(--lightblack);
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+@keyframes progressSongBar {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes progress {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+/* End Progress Bar */
+
+
+ul li.playing {
+    pointer-events: none;
+    color: var(--violet);
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="head">
+            <i class="material-icons">expand_more</i>
+            <span>Now Playing</span>
+            <i class="material-icons">more_horiz</i>
+        </div>
+        <div class="image">
+            <img src="" alt="">
+        </div>
+        <div class="audio">
+            <p class="audioName"></p>
+            <p class="audioSinger"></p>
+
+            <audio id="#audio" src=""></audio>
+        </div>
+        <div class="progressBar">
+            <div class="progressSong" draggable="true"></div>
+            <div class="song-timer">
+                <span class="current-time">0:00</span>
+                <span class="max-duration">2:34</span>
+            </div>
+
+        </div>
+        <div class="icons">
+            <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+            <i id="prev" class="material-icons">skip_previous</i>
+            <div class="play-pause">
+                <i class="material-icons play pause">play_arrow</i>
+            </div>
+            <i id="next" class="material-icons">skip_next</i>
+            <i id="more-music" class="material-icons">queue_music</i>
+        </div>
+        <div class="playlist">
+            <div class="playlist-head">
+                <div class="playlist-details">
+                    <i id="more-music" class="material-icons">queue_music</i>
+                    <span>Music list</span>
+                </div>
+                <i id="close" class="material-icons">close</i>
+            </div>
+                <ul>
+                    <!-- <li class="song"> -->
+                        <!-- <div class="song-title">
+                            <p class="audioName">Jim - Sun Goes Down</p>
+                            <p class="audioSinger">Jim Yosef x Roy</p>
+                        </div>
+                        <span class="duration">0:00</span> -->
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    <script src="playlist.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
